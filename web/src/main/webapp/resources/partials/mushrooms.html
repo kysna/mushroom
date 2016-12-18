@@ -1,1 +1,55 @@
 <h1>Mushrooms</h1>
+
+<div class="row col-sm-12 input-group" style="margin-bottom: 5px">
+    <p>
+        <button class="btn btn-success" ng-click="findAllMushrooms()">All Mushrooms</button>
+        <span class="pull-right " ng-show="user.role == 'ADMIN'" >
+            <a class="btn btn-success" href="#/mushrooms/newmushroom" role="button">New Mushroom</a>
+        </span>
+    </p>
+</div>
+<form name="form" novalidate class="form-horizontal input-group" ng-submit="form.$valid && findMushroomByName(name)">
+    <div class="form-group">
+        <div class="col-sm-12 input-group">
+            <span class="input-group-btn">
+                <button ng-disabled="!form.$valid" class="btn btn-success" type="submit">Show Mushroom With Name</button>
+            </span>
+            <input placeholder="name" id="name" type="text" name="name" class="form-control" ng-model="name" required/>
+        </div>
+    </div>
+</form>
+<form name="form2" novalidate class="form-horizontal input-group" ng-submit="form2.$valid && findMushroomByType(type)">
+    <div class="form-group">
+        <div class="col-sm-12 input-group">
+            <span class="input-group-btn">
+                <button ng-disabled="!form2.$valid" class="btn btn-success" type="submit">Show Mushroom With Type</button>
+            </span>
+            <input placeholder="type" id="type" type="text" name="type" class="form-control" ng-model="type" required/>
+        </div>
+    </div>
+</form>
+<form name="form3" novalidate class="form-horizontal input-group" ng-submit="form3.$valid && findMushroomByDate(date)">
+    <div class="form-group">
+        <div class="col-sm-12 input-group">
+            <span class="input-group-btn">
+                <button ng-disabled="!form3.$valid" class="btn btn-success" type="submit">Show Mushroom Within Date</button>
+            </span>
+            <input placeholder="YYYY-MM-DD hh:mm" id="date" type="text" name="date" class="form-control" ng-model="date" required/>
+        </div>
+    </div>
+</form>
+<form name="form4" novalidate class="form-horizontal input-group" ng-submit="form4.$valid && findMushroomByDateInterval(fromDate,toDate)">
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-btn">
+                <button ng-disabled="!form4.$valid" class="btn btn-success" type="submit">Show Mushrooms Within Date Interval</button>
+            </span>
+            <input placeholder="from YYYY-MM-DD hh:mm" id="fromDate" type="text" name="fromDate" class="form-control" ng-model="fromDate" required/>
+            <span class="input-group-btn" style="width:0px;"></span> <!-- workaround -->
+            <input placeholder="to YYYY-MM-DD hh:mm" id="toDate" type="text" name="toDate" class="form-control" ng-model="toDate" required/>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div ng-include="'resources/partials/list/list_mushroom.html'"></div></h1>
